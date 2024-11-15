@@ -41,6 +41,8 @@ class User extends ResourceController
                     ]
                 ];
                 return $this->respondCreated($response);
+            } else {
+                return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
             return $this->failServerError('An error has occurred');
@@ -60,6 +62,8 @@ class User extends ResourceController
                     ]
                 ];
                 return $this->respond($response);
+            } else {
+                return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
             return $this->failServerError('An error has occurred');
@@ -78,6 +82,8 @@ class User extends ResourceController
                     ]
                 ];
                 return $this->respondDeleted($response);
+            } else {
+                return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
             return $this->failServerError('An error has occurred');

@@ -41,6 +41,8 @@ class Event extends ResourceController
                     ]
                 ];
                 return $this->respondCreated($response);
+            } else {
+                return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
             return $this->failServerError('An error has occurred');
@@ -56,10 +58,12 @@ class Event extends ResourceController
                     'status' => 200,
                     'error' => null,
                     'message' => [
-                        'success' => 'Event updated successfully'
-                    ]
+                            'success' => 'Event updated successfully'
+                        ]
                 ];
                 return $this->respond($response);
+            }else {
+                return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
             return $this->failServerError('An error has occurred');
@@ -73,10 +77,12 @@ class Event extends ResourceController
                     'status' => 200,
                     'error' => null,
                     'message' => [
-                        'success' => 'Event deleted successfully'
-                    ]
+                            'success' => 'Event deleted successfully'
+                        ]
                 ];
                 return $this->respondDeleted($response);
+            }else {
+                return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
             return $this->failServerError('An error has occurred');
