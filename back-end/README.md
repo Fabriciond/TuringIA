@@ -14,10 +14,10 @@ Antes de comenzar, asegúrate de tener instalados los siguientes elementos en tu
 ---
 
 ## Configuración inicial
-
+```
 $ composer install
 $ php spark serve
-
+```
 ## Endpoints de la API
 
 La API sigue una estructura RESTful y utiliza `ResourceController` para la gestión de recursos. A continuación, se listan los endpoints disponibles:
