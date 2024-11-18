@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+<section>
+  <div *ngFor="let event of events">
+    <div class="event">
+      <img src="{{ event.image }}" alt="" />
+      <div class="info">
+        <h4>{{ event.title }}</h4>
+        <p>{{ event.description }}</p>
+        <p>Locacion: {{ event.location }}</p>
+        <!-- format date and time -->
+        <p>Fecha: {{ event.date | date: 'dd/MM/yyyy' }} {{event.time}}</p>
+        
+        <p>Capacidad: {{event.max_capacity}} </p>
+
+        <a href=""> ver mas</a>
+      </div>
+    </div>
+  </div>
+</section>
