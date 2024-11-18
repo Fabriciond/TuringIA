@@ -1,0 +1,25 @@
+footer {
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+img {
+  width: 150px;
+
+  margin-top: 1em;
+}
+ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  padding: 1em;
+}
+li {
+  padding: 1em;
+}
+a {
+  color: var(--tertiary-color);
+  text-decoration: none;
+}

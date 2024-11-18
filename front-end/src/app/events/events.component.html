@@ -1,1 +1,30 @@
-<p>events works!</p>
+<section>
+  <div class="events">
+    <h3>Eventos</h3>
+    <div class="event" *ngFor="let event of events">
+      <img src="{{ event.image }}" alt="" />
+    </div>
+    <div class="pagination">
+      <a href="">Anterior</a>
+      <a href="">1</a>
+      <a href="">2</a>
+      <a href="">3</a>
+      <a href="">Siguiente</a>
+    </div>
+  </div>
+  <div class="highlights">
+    <h3>Destacados</h3>
+    <div class="highlight" *ngFor="let event of events">
+      <img src="{{ event.image }}" alt="" />
+      <div class="info">
+        <h4>{{ event.title }}</h4>
+        <p>{{ event.description }}</p>
+        <p>Locacion: {{ event.location }}</p>
+        <!-- format date and time -->
+        <p>Fecha: {{ event.date | date : "dd/MM/yyyy" }} {{ event.time }}</p>
+
+        <a href=""> ver mas</a>
+      </div>
+    </div>
+  </div>
+</section>

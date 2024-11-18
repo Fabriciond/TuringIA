@@ -1,0 +1,30 @@
+section{
+    height: 90vh;
+    background-color: var(--primary-color);
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+h1{
+    color: var(--tertiary-color);
+    font-size: 3em;
+    margin-bottom: 1em;
+}
+p{
+    max-width: 500px;
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    text-wrap: wrap;
+}
+a{
+    width: 250px;
+    padding: 0.5em 1em;
+    background-color: var(--tertiary-color);
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+}
