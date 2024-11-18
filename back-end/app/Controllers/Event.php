@@ -31,7 +31,33 @@ class Event extends ResourceController
     {
         try {
 
-            $data = $this->request->getJSON();
+            $data = $this->request->getPost();
+
+
+            $file = $this->request->getFile('image');
+            if ($file && $file->isValid() && !$file->hasMoved()) {
+
+                $newName = $file->getRandomName();
+
+
+                $targetPath = ROOTPATH . 'public/uploads/events/';
+
+
+                if (!is_dir($targetPath)) {
+                    mkdir($targetPath, 0755, true);
+                }
+
+
+                $file->move($targetPath, $newName);
+
+
+                $data['image'] = base_url('uploads/events/' . $newName);
+            } else {
+
+                return $this->respond(['error' => 'Invalid or missing image file'], 400);
+            }
+
+
             if ($this->model->insert($data)) {
                 $response = [
                     'status' => 201,
@@ -42,12 +68,15 @@ class Event extends ResourceController
                 ];
                 return $this->respondCreated($response);
             } else {
+
                 return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
-            return $this->failServerError('An error has occurred');
+
+            return $this->failServerError('An error has occurred: ' . $th->getMessage());
         }
     }
+
 
     public function update($id = null)
     {
@@ -58,11 +87,11 @@ class Event extends ResourceController
                     'status' => 200,
                     'error' => null,
                     'message' => [
-                            'success' => 'Event updated successfully'
-                        ]
+                        'success' => 'Event updated successfully'
+                    ]
                 ];
                 return $this->respond($response);
-            }else {
+            } else {
                 return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {
@@ -77,11 +106,11 @@ class Event extends ResourceController
                     'status' => 200,
                     'error' => null,
                     'message' => [
-                            'success' => 'Event deleted successfully'
-                        ]
+                        'success' => 'Event deleted successfully'
+                    ]
                 ];
                 return $this->respondDeleted($response);
-            }else {
+            } else {
                 return $this->respond($this->model->errors(), 400);
             }
         } catch (\Throwable $th) {

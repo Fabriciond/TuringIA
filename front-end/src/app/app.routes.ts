@@ -7,6 +7,7 @@ import { PageEventsComponent } from './page-events/page-events.component';
 import { PagePlansComponent } from './page-plans/page-plans.component';
 import { PanelAdminComponent } from './panel-admin/panel-admin.component';
 import { CreateEventComponent } from './create-event/create-event.component';
+import { AuthGuardService as AuthGuard  } from './auth-guard.service';
 export const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path:'register', component: RegisterComponent},
@@ -14,6 +15,7 @@ export const routes: Routes = [
     {path:'plans', component: PagePlansComponent},
     {path: '', component: HomeComponent},
 
-    {path: 'admin', component: PanelAdminComponent},
+    {path: 'admin', component: PanelAdminComponent, canActivate: [AuthGuard]},
+    
     {path: 'events/add', component: CreateEventComponent}
 ];

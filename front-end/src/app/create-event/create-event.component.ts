@@ -1,11 +1,17 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EventsService } from '../events.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-event',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './create-event.component.html',
   styleUrl: './create-event.component.css',
 })
@@ -27,7 +33,8 @@ export class CreateEventComponent {
       required: true,
     },
   ];
-  constructor(private fb: FormBuilder, private eventService: EventsService) {
+  selectedFile: File | null = null;
+  constructor(private fb: FormBuilder, private eventService: EventsService, private router: Router) {
     this.form = this.fb.group({});
   }
   ngOnInit(): void {
@@ -39,10 +46,24 @@ export class CreateEventComponent {
       );
     });
   }
+  onFileChange(event: any): void {
+    // Capturar el archivo seleccionado
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+    }
+  }
   onSubmit(): void {
     if (this.form.valid) {
-      this.eventService.addEvent(this.form.value);
-      console.log('Formulario enviado:', this.form.value);
+      const formData = new FormData();
+      Object.keys(this.form.value).forEach((key) => {
+        formData.append(key, this.form.value[key]);
+      });
+      if (this.selectedFile) {
+        formData.append('image', this.selectedFile);
+      }
+      this.eventService.addEvent(formData);
+      this.router.navigate(['/admin']);
     } else {
       console.log('Formulario inválido');
     }

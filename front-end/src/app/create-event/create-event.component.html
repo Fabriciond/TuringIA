@@ -7,6 +7,7 @@
           class="input-field"
           [formControlName]="field.name"
           [required]="field.required"
+          (change)="field.type === 'file' ? onFileChange($event) : null"
         />
         <label class="input-label">{{ field.label }}</label>
       </div>
