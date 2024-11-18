@@ -1,0 +1,60 @@
+<section>
+ 
+  <div class="card">
+    <div class="card-header">
+      <h2>Eventos</h2>
+      <a routerLink="/events/add" class="btn btn-add">Agregar Nuevo</a>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Titulo</th>
+            <th>Descripción</th>
+            <th>Lugar</th>
+            <th>Fecha</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events">
+            <td>{{ event.title }}</td>
+            <td>{{ event.description }}</td>
+            <td>{{ event.location }}</td>
+            <td>{{ event.date }}</td>
+            <td>
+              <button (click)="editEvent(event)" class="btn btn-edit">
+                Editar
+              </button>
+              <button (click)="deleteEvent(event.id)" class="btn btn-delete">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h2>Usuarios</h2>
+      <a routerLink="/" class="btn btn-add">Agregar Nuevo</a>
+    </div>
+    <div class="card-body">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Rol</th>
+           
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
