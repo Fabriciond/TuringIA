@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="card-form">
+      <div class="input" *ngFor="let field of formFields">
+        <input
+          [type]="field.type"
+          class="input-field"
+          [formControlName]="field.name"
+          [required]="field.required"
+        />
+        <label class="input-label">{{ field.label }}</label>
+      </div>
+
+      <div class="action">
+        <button class="action-button" type="submit" [disabled]="form.invalid" ngClass="{}">
+          Crear
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
