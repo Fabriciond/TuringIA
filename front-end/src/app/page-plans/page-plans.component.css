@@ -1,0 +1,44 @@
+section {
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary-color);
+  padding: 5em;
+}
+
+
+.plans{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5em;
+}
+.plan {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+  padding: 2em;
+  background-color: var(--secondary-color);
+  margin: 1em;
+  min-height: 400px;
+}
+.plan h3 {
+  color: var(--tertiary-color);
+  font-size: 2em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.plan p {
+  color: var(--primary-color);
+  font-size: 1em;
+  padding-bottom: 1em;
+  text-align: left;
+}
+
+.plan:nth-child(2) {
+  background-color: var(--tertiary-color);
+ 
+}
+.plan:nth-child(2) h3 {
+  color: var(--secondary-color);
+}
