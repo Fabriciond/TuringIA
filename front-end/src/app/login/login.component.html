@@ -1,0 +1,18 @@
+<section>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="">Email</label>
+      <input type="text" formControlName="email" name="email" id="" />
+    </div>
+    <div>
+      <label for="">Password</label>
+      <input type="password" formControlName="password" id="password" />
+    </div>
+
+    <button type="submit">Iniciar sesión</button>
+    <div>
+      <!-- register -->
+      <a routerLink="/register">Register</a>
+    </div>
+  </form>
+</section>
